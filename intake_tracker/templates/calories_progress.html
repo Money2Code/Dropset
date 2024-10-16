@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calorie Intake Progress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .circle {
+            width: 150px;
+            height: 150px;
+            background: conic-gradient(#4caf50 {{ protien_percentage }}%, #d3d3d3 {{ protien_percentage }}%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<!-- <body>
+    <h1>Protein Intake Progress</h1>
+    <div class="circle">
+        {{ percentage }}%
+    </div>
+    <h1>{{ calorie_intake.protein }} </h1>
+    <p>{{ calorie_intake.protein}} protein out of {{ calorie_intake.protein_goal }} grams </p> 
+    <a href="{% url 'log_calorie_intake' %}">Log More Intake</a>
+
+
+    <h1>carbs Intake Progress</h1>
+    <div class="circle">
+        {{ carbs_percentage }}%
+    </div>
+    <h1>{{ calorie_intake.carbs }} </h1>
+    <p>{{ calorie_intake.carbs}} carbs out of {{ calorie_intake.carbs_goal }} grams </p> 
+    <a href="{% url 'log_calorie_intake' %}">Log More Intake</a> -->
+<!-- </body> -->
+<body>
+    <h1>Calories Intake Progress</h1>
+    <div class="circle">
+        {{ protien_percentage }}%
+    </div>
+    <!-- <h1>{{ water_intake.goal }} </h1> -->
+    <p>{{ calorie_intake.protein }} gm out of {{ calorie_intake.protein_goal }} gm</p>
+
+    <div class="circle">
+        {{ carbs_percentage }}%
+    </div>
+    <h1>{{ calorie_intake.carbs }} </h1>
+    <p>{{ calorie_intake.carbs}} carbs out of {{ calorie_intake.carbs_goal }} gm </p> 
+
+    <div class="circle">
+        {{ fats_percentage }}%
+    </div>
+    <h1>{{ calorie_intake.fats }} </h1>
+    <p>{{ calorie_intake.fats}} fats out of {{ calorie_intake.fats_goal }} gm </p>
+    </div>
+
+    <div class="circle">
+    {{fiber_percentage}}
+    </div>
+    <h1>{{ calorie_intake.fiber }} </h1>
+    <p>{{ calorie_intake.fiber}} fiber out of {{ calorie_intake.fiber_goal }} gm </p>
+
+    <a href="{% url 'log_water_intake' %}">Log More Intake</a>
+</body>
+</html>

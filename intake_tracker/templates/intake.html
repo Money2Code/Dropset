@@ -1,0 +1,180 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Water & Calorie Tracker</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .progress-container {
+            width: 80%; /* Adjust as needed */
+            height: 30px;
+            background-color: #d3d3d3;
+            border-radius: 5px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%; /* Initial width is 0% */
+            background-color: #4caf50;
+            border-radius: 5px;
+            transition: width 0.4s ease; /* Smooth transition */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Water & Calorie Tracker</h1>
+
+        <h2>Water Intake</h2>
+        <div class="progress-container">
+            <div class="progress-bar" id="water-progress-bar"></div>
+        </div>
+        <span id="water-label">{{ water_intake }} L</span>
+
+        <h2>Calorie Intake</h2>
+        <div class="progress-container">
+            <div class="progress-bar" id="calorie-progress-bar"></div>
+        </div>
+        <span id="calorie-label">{{ calorie_intake }} kcal</span>
+
+        <button id="update-button">Update Intake</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const waterGoal = {{ water_goal }}; // Total water goal in liters
+            const calorieGoal = {{ calorie_goal }}; // Total calorie goal
+
+            let waterIntake = {{ water_intake }}; // Current water intake
+            let calorieIntake = {{ calorie_intake }}; // Current calorie intake
+            
+            const updateProgress = () => {
+                // Increment water intake and calorie intake on button click
+                if (waterIntake < waterGoal) {
+                    waterIntake += 1; // Adjust increment as needed
+                }
+                // if (calorieIntake < calorieGoal) {
+                //     calorieIntake += 5; // Adjust increment as needed
+                // }
+
+                // Calculate percentages
+                const newWaterPercentage = (waterIntake / waterGoal) * 100;
+                const newCaloriePercentage = (calorieIntake / calorieGoal) * 100;
+
+                // Update progress bars
+                document.getElementById('water-progress-bar').style.width = `${newWaterPercentage}%`;
+                document.getElementById('calorie-progress-bar').style.width = `${newCaloriePercentage}%`;
+                
+                // Update labels
+                document.getElementById('water-label').innerText = `${waterIntake.toFixed(1)} L`;
+                document.getElementById('calorie-label').innerText = `${calorieIntake.toFixed(0)} kcal`;
+
+                // Stop the update when goals are reached
+                if (waterIntake >= waterGoal ) {
+                    alert("Goals reached!");
+                    document.getElementById('update-button').disabled = true; // Disable button
+                }
+            };
+
+            // Add click event listener to the button
+            document.getElementById('update-button').addEventListener('click', updateProgress);
+        });
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Intake Tracker</title>
+    <style>
+        .progress-circle {
+            width: 150px;
+            height: 150px;
+            background: conic-gradient(#0a84e7 0%, #d3d3d3 0%); /* Initialize with 0% */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .progress-circle span {
+            position: absolute;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Daily Water Intake Tracker</h1>
+        <div class="progress-circle" id="water-circle">
+            <span id="water-label">{{ water_intake }} L</span>
+        </div>
+        <button id="update-button">Add Water Intake</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const waterGoal = {{ water_goal }}; // Total water goal in liters
+            let waterIntake = {{ water_intake }}; // Current water intake
+
+            const updateProgress = () => {
+                // Increment water intake on button click
+                if (waterIntake < waterGoal) {
+                    waterIntake += .8; // Adjust increment as needed
+                }
+
+                // Calculate percentage
+                const waterPercentage = (waterIntake / waterGoal) * 100;
+
+                // Update progress circle dynamically using conic gradient
+                document.getElementById('water-circle').style.background = 
+                    `conic-gradient(#4caf50 ${waterPercentage}%, #d3d3d3 ${waterPercentage}%)`;
+                
+                // Update label
+                document.getElementById('water-label').innerText = `${waterIntake.toFixed(1)} L`;
+
+                // Stop the update when goal is reached
+                if (waterIntake >= waterGoal) {
+                    alert("Daily water goal reached!");
+                    document.getElementById('update-button').disabled = true; // Disable button
+                }
+            };
+
+            // Add click event listener to the button
+            document.getElementById('update-button').addEventListener('click', updateProgress);
+        });
+    </script>
+</body>
+</html>

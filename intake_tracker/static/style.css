@@ -1,0 +1,531 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1a1a1d;
+    /* Dark theme background */
+    color: #c7c7c7;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #111;
+    /* Dark navbar */
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.navbar-brand,
+.nav-link {
+    color: #c7c7c7 !important;
+    font-weight: 600;
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+    color: #28a745 !important;
+}
+
+/* Header Section */
+header {
+    background: url('https://example.com/fitness-banner-dark.jpg') no-repeat center center/cover;
+    height: 90vh;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 2s ease-in-out;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 5px #000;
+}
+
+header p {
+    font-size: 1.5rem;
+}
+
+/* header .btn {
+    margin-top: 20px;
+    padding: 8px 15px;
+    background-color: #28a745;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    width: 120px;/* Auto width to fit content */
+    /* display: inline-block; /* Ensure the button only takes necessary width */
+    /* text-align: center; /* Center text inside button */
+    /* white-space: nowrap; */ 
+/* }  */
+
+header .btn {
+    margin-top: 20px;
+    padding: 5px 10px !important; /* Force padding to be smaller */
+    background-color: #28a745 !important;
+    border: none !important;
+    color: #fff !important;
+    font-size: 1rem !important; /* Make font size smaller */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.3s ease !important;
+    width: auto !important; /* Force width to adjust according to content */
+    display: inline-block !important; /* Ensure button takes up only necessary width */
+    text-align: center !important;
+    white-space: nowrap !important; /* Prevent text wrapping */
+    max-width: 150px !important; /* Optional: Add a maximum width constraint */
+}
+
+
+
+header .btn:hover {
+    background-color: #218838;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes flipIn {
+    from {
+        transform: rotateY(90deg);
+    }
+
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Calculator Section */
+
+/* .calculateCalories{
+    width: 10px;
+} */
+
+.calculator {
+    background-color: #2a2a2d;
+    height: 1000px; /* Set a specific height for the calculator section */
+    padding-top: 20px; /* Optional: adjust the padding for spacing */
+    padding-bottom: 20px;
+    /* Dark card */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: slideUp 1s ease-in-out;
+}
+
+.calculator:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+}
+
+.form-control,
+.form-select {
+    background-color: #1a1a1d;
+    color: #c7c7c7;
+    border: 1px solid #333;
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: none;
+    border-color: #28a745;
+}
+
+.btn-calculate {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-calculate:hover {
+    background-color: #218838;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px);
+}
+
+/* Flip Card Results */
+.flip-card {
+    perspective: 1000px;
+    margin-top:80px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.flip-card-front {
+    background-color: #28a745;
+    color: white;
+}
+
+.flip-card-back {
+    background-color: #2a2a2d;
+    color: #fff;
+    transform: rotateY(180deg);
+}
+
+/* Progress Bars for Diet */
+.progress {
+    height: 20px;
+    background-color: #444;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: #28a745;
+    transition: width 1s ease-in-out;
+}
+
+/* Footer */
+footer {
+    background-color: #111;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Moving Icons for Fun */
+.fas.fa-dumbbell {
+    color: #28a745;
+    font-size: 3rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.fas.fa-dumbbell:hover {
+    transform: rotate(360deg) scale(1.2);
+}
+header {
+    background: url('https://example.com/fitness-banner-dark.jpg') no-repeat center center/cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Fade-in Animations */
+  .fade-in {
+    opacity: 0;
+    animation: fadeInEffect 1.5s ease-out forwards;
+  }
+
+  .fade-in-delay {
+    opacity: 0;
+    animation: fadeInEffect 2s ease-out forwards;
+  }
+
+  @keyframes fadeInEffect {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide-Up Animation for Icon */
+  .slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUpEffect 2s ease-out forwards;
+  }
+
+  @keyframes slideUpEffect {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Animated Button Styles */
+  .btn-animated {
+    padding: 12px 30px;
+    background-color: #28a745;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .btn-animated:hover {
+    background-color: #218838;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px);
+  }
+
+  /* Glowing Text Effect for h1 */
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-shadow: 0px 0px 10px rgba(0, 255, 0, 0.7);
+  }
+
+  /* Icon Animation: Rotate and Bounce */
+  .fas.fa-dumbbell {
+      color: #28a745;
+      font-size: 3rem;
+      transition: transform 0.3s ease-in-out;
+  }
+
+  .fas.fa-dumbbell:hover {
+      transform: rotate(360deg) scale(1.2);
+  }
+
+  @keyframes rotateBounce {
+    0% {
+      transform: rotate(0deg) scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      transform: rotate(180deg) scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+
+  .diet-plan {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.diet-item {
+    display: flex;
+    align-items: center;
+    background-color: #1a1a1d;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.diet-item:hover {
+    transform: translateY(-5px);
+}
+
+.diet-item i {
+    color: #28a745;
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+.diet-item span {
+    font-size: 1.2rem;
+    color: #c7c7c7;
+}
+
+.diet-item strong {
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Signup Form Styles */
+.signup-section {
+    padding: 60px 0;
+    background-color: #1a1a1d;
+    color: white;
+}
+
+.signup-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.signup-form h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #28a745;
+    border-radius: 5px;
+    background-color: white;
+    color: white;
+}
+
+.form-group input:focus {
+    border-color: #fff;
+    outline: none;
+}
+
+.btn-lg {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-lg:hover {
+    background-color: #218838;
+}
+
+/* Services Section */
+.services {
+    padding: 50px 0;
+    background-color: #1a1a1d;
+    text-align: center;
+}
+
+.services .heading {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.services .heading span {
+    color: #218838;
+}
+
+/* Service Container */
+.service-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 0px;
+}
+
+/* Service Box Styling */
+.service-box {
+    background-color: #218838;
+    border-radius: 15px;
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-box i {
+    font-size: 3rem;
+    color: #218838;
+    margin-bottom: 20px;
+}
+
+.service-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.service-box p {
+    font-size: 1rem;
+    color: white;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.service-box .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 25px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+}
+
+.service-box .btn:hover {
+    background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-box {
+        width: 100%;
+        max-width: 400px;
+    }
+}

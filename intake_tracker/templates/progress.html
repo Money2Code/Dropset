@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Intake Progress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .circle {
+            width: 150px;
+            height: 150px;
+            background: conic-gradient(#4caf50 {{ percentage }}%, #d3d3d3 {{ percentage }}%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Water Intake Progress</h1>
+    <div class="circle">
+        {{ percentage }}%
+    </div>
+    <h1>{{ water_intake.goal }} </h1>
+    <p>{{ water_intake.intake }} liters out of {{ water_intake.goal }} liters</p>
+    <a href="{% url 'log_water_intake' %}">Log More Intake</a>
+</body>
+</html>

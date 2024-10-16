@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Calorie Calculator & Diet Planner{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<header id="home">
+    <div class="container text-center">
+        <h1 class="fade-in">Calorie Calculator & Diet Planner</h1>
+        <p class="fade-in-delay">Track your calories and craft the perfect diet with ease!</p>
+        <a href="#calculator" class="btn btn-lg btn-animated w-100">Get Started</a>
+        <div class="mt-4">
+            <i class="fas fa-dumbbell "></i>
+        </div>
+    </div>
+</header>
+
+<!-- Calculator Section -->
+<section class="py-5" id="calculator">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="calculator">
+                <h2 class="text-center mb-4 text-white">Calorie Calculator</h2>
+                
+                <!-- Django Form -->
+                <!-- <form method="POST" id="calorieForm" action="{% url 'calculate_diet_plan' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-calculate w-100">Calculate</button>
+                </form> -->
+
+                <form method="POST" id="calorieForm" action="{% url 'calculate_diet_plan' %}">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="weight" class="form-label">Weight (kg):</label>
+                        {{ form.weight }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="height" class="form-label">Height (cm):</label>
+                        {{ form.height }}
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age:</label>
+                        {{ form.age }}
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">Gender:</label>
+                        {{ form.gender }}
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="activity" class="form-label">Activity Level:</label>
+                        {{ form.activity_level }}
+                    </div>
+                
+                    <button type="submit" class="btn btn-calculate w-100">Calculate</button>
+                </form>
+                
+
+                <!-- Flip Card for Results -->
+                {% if calories %}
+                <div class="flip-card mt-4">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>Your Daily Calorie Needs: <span>{{ calories }}</span> kcal</h2>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Diet Plan</h3> 
+                            <div class="diet-plan">
+                                <div class="diet-item">
+                                    <i class="fas fa-drumstick-bite"></i>
+                                    <span>Proteins: <strong>{{ proteins }}</strong> g</span>
+                                </div>
+                                <div class="diet-item">
+                                    <i class="fas fa-bread-slice"></i>
+                                    <span>Carbohydrates: <strong>{{ carbs }}</strong> g</span>
+                                </div>
+                                <div class="diet-item">
+                                    <i class="fas fa-bacon"></i>
+                                    <span>Fats: <strong>{{ fats }}</strong> g</span>
+                                </div>
+                                <div class="diet-item">
+                                    <i class="fa-solid fa-carrot"></i>
+                                    <span>Fibers: <strong>{{ fibers }}</strong> g</span>
+                                </div>
+                                <div class="diet-item">
+                                    <i class="fa-solid fa-droplet"></i>
+                                    <span>Water: <strong>{{ water }}</strong> ltr</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% if request.user.is_authenticated %}
+    <div class="container mt-5">
+        <li><a class="nav-link" href="/goals">Goals Here</a></li>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

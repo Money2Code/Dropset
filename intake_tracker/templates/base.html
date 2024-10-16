@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Calorie Calculator & Diet Planner{% endblock %}</title>
+    <!-- Bootstrap CSS for responsive design -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for moving icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Font for professional typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/index">DropSet</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index/#calculator">Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#diet">Diet Plans</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    {% if not request.user.is_authenticated %}
+                    <li>
+                        <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                    </li>
+                    {% else %}
+                    <li><a class="nav-link" href="/handlelogout">Logout</a></li>
+                    {% endif %}
+
+
+                    {% if  request.user.is_authenticated %}
+                    <li><a class="nav-link" href="/index">Welcome</a></li>
+                    {% endif %}
+                  
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- {% if  request.user.is_authenticated %}
+      <a href="/" class="get-started-btn scrollto">Welcome</a>
+    {% endif %} -->
+    <!-- {% if  request.user.is_authenticated %}
+    <a href="/" class="get-started-btn scrollto">Welcome</a>
+    {% endif %} -->
+    <!-- Main Content -->
+    <div class="container">
+        {% block content %}
+        <!-- Default content can go here if necessary -->
+        {% endblock %}
+    </div>
+     <div class="container">
+        
+     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 DropSet - All Rights Reserved</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        function calculateCalories() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const age = parseInt(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            const activity = document.getElementById('activity').value;
+
+            let bmr;
+            if (gender === 'male') {
+                bmr = 88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age);
+            } else {
+                bmr = 447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age);
+            }
+
+            const activityMultiplier = {
+                sedentary: 1.2,
+                light: 1.375,
+                moderate: 1.55,
+                active: 1.725,
+                extra: 1.9
+            };
+
+            const calories = Math.round(bmr * activityMultiplier[activity]);
+            document.getElementById('calories').innerText = calories;
+
+            const proteins = Math.round(weight * 1.8);
+            const carbs = Math.round((calories - (proteins * 4)) * 0.55 / 4);
+            const fats = Math.round((calories - (proteins * 4) - (carbs * 4)) / 9);
+
+            document.getElementById('proteins').innerText = proteins;
+            document.getElementById('carbs').innerText = carbs;
+            document.getElementById('fats').innerText = fats;
+
+            let fibers;
+            if (gender === 'male') {
+                fibers = weight >= 50 ? 30 : 38;  // Adjust for age if required
+            } 
+            else {
+                fibers = weight >= 50 ? 21 : 25;  // Adjust for age similarly
+            }
+
+    // Water intake calculation (35 to 45 mL of water per kg of body weight)
+            const waterMin = (weight * 35) / 1000;  // Minimum water in liters
+            const waterMax = (weight * 45) / 1000;  // Maximum water in liters
+
+            document.getElementById('fibers').innerText = fibers ;  // Display fiber intake
+            document.getElementById('water').innerText = waterMin.toFixed(1) + ' - ' + waterMax.toFixed(1) ;  // Display water intake
+
+            document.querySelector('.flip-card-inner').style.transform = 'rotateY(180deg)';
+        }
+    </script>
+
+</body>
+
+</html>
